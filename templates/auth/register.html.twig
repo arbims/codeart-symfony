@@ -1,0 +1,46 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+<div class="header_login">
+	<div class="container">
+		<h2>Inscription</h2>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<div class="body-login">
+                {{ form_start(form) }}
+             
+                    
+                    {{ form_widget(form.username , { 'attr': {'class': "form-control",
+                    'placeholder': "Nom d'utilisateur"} }) }}
+                    {{ form_errors(form.username)}}
+                  
+                    {{ form_widget(form.email ,{ 'attr': {'class': "form-control",
+                    'placeholder': "Email"} }) }}
+                    {{ form_errors(form.email)}}
+                    {{ form_widget(form.password ,{ 'attr': {'class': "form-control",
+                    'placeholder': "Mot de passe"} }) }}
+                    {{ form_errors(form.password)}}
+                    {{ form_widget(form.password_confirmation , { 'attr': {'class': "form-control",
+                    'placeholder': "Confirmer le mot de passe"} }) }}
+              
+    
+                    <button class="btn btn-primary btn-login">S'inscrire</button>
+                {{ form_end(form) }}
+            </div>
+
+           
+		</div>
+		<div class="col-md-6 col-sm-12">
+            <div class="body-login-seciaux">
+            <!-- <a href="" class="btn btn-primary btn-facebook">Se connecter avec facebook</a> -->
+            <?php echo $this->Social->loginFacebook(['label' => '<i class="fa fa-facebook"></i>&nbsp; Se connecter avec facebook', 'class' => 'btn btn-primary btn-facebook']); ?>
+            <?php echo $this->Social->loginGoogle(['label' => '<i class="fa fa-google"></i>&nbsp; Se connecter avec google', 'class' => 'btn btn-primary btn-google']); ?>
+            </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

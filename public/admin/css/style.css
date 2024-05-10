@@ -1,0 +1,76 @@
+.avatar-navbar{
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.error-message {
+    font-size: 14px;
+    position: relative;
+    line-height: 16px;
+    color: #721c24;
+}
+.error {
+    width: 100% !important;
+}
+
+.form-error {
+    border-color: #721c24;
+}
+
+.btn {
+    border-radius: 3px;
+}
+.form-control {
+    border-radius: 3px;
+    height: 40px;
+}
+
+.technologies_img_admin {
+    width: 100px;
+}
+
+.dataTables_filter {
+    float: right;
+}
+
+.ui-state-default {
+    line-height: 47px;
+    border-left: 10px solid #71ba51 !important;
+    margin: 10px 0px;
+}
+
+#sortable {
+    list-style: none;
+}
+
+.select2 { width: 100% !important; }
+.close {
+    cursor: pointer;
+}
+
+.dz-image img {
+    max-width: 120px !important;
+}
+
+.pop-medias {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #ffffffe3;
+    z-index: 999;
+    display: none;
+    box-shadow: 20px 20px 50px grey;
+}
+
+.pop-medias-content {
+    padding: 20px;
+}
+
+.dz-image img {
+    width: 100% !important;
+    height: 100% !important;
+}

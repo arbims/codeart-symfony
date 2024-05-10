@@ -1,0 +1,44 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <a class="navbar-brand" href="/">
+            <div class="header-image">
+                <img src="{{ asset('img/codeartheader.png') }}">
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="{{ path('page.home') }}" class="nav-link">Tutoriel</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('page.home') }}" class="nav-link">Formation</a>
+                </li>
+                <li class="nav-item">                    
+                    <a href="{{ path('page.home') }}" class="nav-link">Formation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('page.home') }}" class="nav-link">Formation</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav my-2 my-lg-0">
+            </ul>
+            {% if not app.user %}
+            <a href="#" class="nav-link navbar_button">S'inscrire</a>
+            <a href="#" class="nav-link navbar_button">Se connecter</a>
+            {% else %}
+            <a href="#" id="show-sidebar">
+                {% if app.user.avatar is not null %}
+                    <img src="/img/users/{{ app.user.avatar }}" class="avatar-navbar">
+                {% else %}
+                    <img src="/img/users/profil.jpg" class="avatar-navbar">
+                {% endif %}
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

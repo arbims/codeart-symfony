@@ -1,0 +1,30 @@
+{% extends 'layouts/admin.html.twig'%}
+
+{% block content %}
+<a href="{{ path('admin.categories.add') }}" class="btn btn-primary">Ajouter</a>
+<br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cat in categories %}
+            <tr>
+                <td>{{ cat.id }}</td>
+                <td>{{ cat.name }}</td>
+                <td>{{ cat.slug }}</td>
+                <td>
+                    <a href="{{ path('admin.categories.delete', {'id': cat.id}) }}" class="btn btn-danger" onclick="return confirm('Voulez vous supprimer ?')" >Supprimer</a>
+                    <a href="{{ path('admin.categories.edit', {'id': cat.id}) }}" class="btn btn-success">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

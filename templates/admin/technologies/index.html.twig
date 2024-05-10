@@ -1,0 +1,30 @@
+{% extends 'layouts/admin.html.twig'%}
+
+{% block content %}
+<a href="{{ path('admin_technology_add') }}" class="btn btn-primary">Ajouter</a>
+<br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>image</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tech in technologies %}
+            <tr>
+                <td><img src="{{ asset(tech.imageFile) }}" alt="" style="max-width: 100px;"></td>
+                <td>{{ tech.name }}</td>
+                <td>{{ tech.slug }}</td>
+                <td>
+                    <a href="{{ path('admin_technology_delete', {'id': tech.id}) }}" class="btn btn-danger" onclick="return confirm('Voulez vous supprimer ?')" >Supprimer</a>
+                    <a href="{{ path('admin_technology_edit', {'id': tech.id}) }}" class="btn btn-success">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

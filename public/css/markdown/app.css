@@ -1,0 +1,48 @@
+.md_editor_text{
+    float: left;
+    top:0;
+    left: 0;
+    width: 50%;
+
+}
+.mdeditor * {
+    box-sizing: border-box;
+}
+
+.md_editor{
+    position: relative;
+}
+
+.md_appercu {
+    float: left;
+    top:0;
+    left: 0;
+    width: 50%;
+    padding: 10px 20px;
+    border-left: 1px solid #EEE;
+}
+
+.fullscreen {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #EEE;
+}
+
+.md_editor_body{
+    border: 1px solid #EEE;
+}
+
+.mirror_content {
+    text-align: left;
+}
+
+.CodeMirror {
+    border: 2px solid #b7b2b240;
+}
+
+.mdeditor_body img {
+    width: 100%;
+}

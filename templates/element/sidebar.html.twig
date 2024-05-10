@@ -1,0 +1,41 @@
+<div class="sidebar">
+    <div class="page-wrapper chiller-theme">
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+            <div class="sidebar-header">
+                <div class="user-pic">
+                    {% if app.user.avatar is not null %}
+                        <img src="/img/users/{{ app.user.avatar }}" class="mg-responsive img-rounded">
+                    {% else %}
+                        <img src="/img/users/profil.jpg" class="mg-responsive img-rounded">
+                    {% endif %}
+                </div>
+
+
+            </div>
+            <!-- sidebar-header  -->
+            <div class="sidebar-menu">
+                <ul>
+                <li class="header-menu">
+                    <a href="{{ path('profil')}}"><span>Profil</span></a>
+                </li>
+
+                <li class="header-menu">
+                    <a href=""><span>Mes sujets</span></a>
+                </li>
+
+                <li class="header-menu">
+                    <a href="{{ path('app_logout') }}"><span>Deconnexion</span></a>
+                </li>
+                
+                <li class="header-menu">
+                    <a href="" data-turbolinks="false"><span>Administration</span></a>
+                </li>
+                
+                </ul>
+            </div>
+            <!-- sidebar-menu  -->
+            </div>
+        </nav>
+    </div>
+</div>

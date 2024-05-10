@@ -1,0 +1,30 @@
+{% extends 'layouts/admin.html.twig'%}
+
+{% block content %}
+<a href="{{ path('admin_post_add') }}" class="btn btn-primary">Ajouter</a>
+<br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.name }}</td>
+                <td>{{ post.slug }}</td>
+                <td>
+                    <a href="{{ path('admin_post_delete', {'id': post.id}) }}" class="btn btn-danger" onclick="return confirm('Voulez vous supprimer ?')" >Supprimer</a>
+                    <a href="{{ path('admin_post_edit', {'id': post.id}) }}" class="btn btn-success">Editer</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

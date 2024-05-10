@@ -1,0 +1,78 @@
+{% extends 'layouts/admin.html.twig'%}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="card position-relative">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Article</h6>
+            </div>
+
+            <div class="card-body">
+                {{ form_start(form , {'label_attr': {'class': 'col-form-label'}})}}
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        {{ form_label(form.name , 'Titre' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="col-sm-6">
+                        {{ form_label(form.slug , 'Slug' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.slug) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        {{ form_label(form.image_file , 'Image' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.image_file) }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form_label(form.technologies , 'Technologies' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.technologies, {'label_attr': {'style': 'width: 100% !imprtant'}}) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <label for="staticEmail" class="col-form-label">Content</label>
+                        <div class="mdeditor">
+                            <div class="mdeditor_toolbar"></div>
+                            <div class="mdeditor_body">
+                                <div class="md_editor_text">
+                                    {{ form_widget(form.content) }}
+                                </div>
+                                <div class="md_appercu">
+                                    <div id="content_markdown" class="mirror_content markdown-body"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        {{ form_label(form.type , 'Type' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.type) }}
+                    </div>
+                    <div class="col-sm-6">
+                        {{ form_label(form.category , 'Categorie' , {'label_attr': {'class': 'col-form-label'}} ) }}
+                        {{ form_widget(form.category) }}
+                    </div>
+                </div>
+                <hr>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                    </div>
+                </div>
+                {{ form_end(form)}}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

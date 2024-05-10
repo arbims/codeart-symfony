@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Liste des article' %}
+
+{% block body %}
+ 
+<div class="header_login">
+  <div class="container">
+    <h2>Blog</h2>
+  </div>
+</div>
+<div class="container">
+  {% for post in posts%}
+    <div class="article">
+      <div class="row">
+        <div class="col-md-4 hidden-sm-down">
+          <a href="{{ path('post_show', {slug: post.slug , id: post.id})}}">
+            <img src="{{ asset(post.imageFile) }}" alt="{{ post.image}}" class="article-img">
+          </a>
+        </div>
+        <div class="col-md-8 col-sm-12">
+          <h2><a href="{{ path('post_show', {slug: post.slug , id: post.id})}}" class="blog-link">{{ post.name }}</a></h2>
+          <div class="article-date">crée le </div>
+          <p>{{ post.content|u.truncate(200) }}</p>
+
+        </div>
+      </div>
+    </div>
+
+  {% endfor %}
+
+  <div class="navigation">
+    {{ knp_pagination_render(posts , 'paginator/custom.html.twig') }}
+</div>
+
+</div>
+
+{% endblock %}

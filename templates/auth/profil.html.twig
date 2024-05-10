@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="header_login">
+	<div class="container">
+		<h2>Mon profil</h2>
+	</div>
+</div>
+<div class="container">
+	<div class="form_profil">
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Mon compte</h3>
+				{{ form_start(form_profil)}}
+                    <div class="form-group">
+                        {{ form_label(form_profil.email, 'Couriel *') }}
+                        {{ form_widget(form_profil.email , { 'attr': {'class': "form-control",
+                        'placeholder': "example@mail.com"} }) }}
+                        {{ form_errors(form_profil.email)}}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form_profil.username, 'Pseudo *') }}
+                        {{ form_widget(form_profil.username , { 'attr': {'class': "form-control",
+                        'placeholder': "Psudo"} }) }}
+                        {{ form_errors(form_profil.username)}}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form_profil.country, 'Pays') }}
+                        {{ form_widget(form_profil.country , { 'attr': {'class': "form-control",
+                        'placeholder': "Pays"} }) }}
+                        {{ form_errors(form_profil.country)}}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+				    </div>
+                {{ form_end(form_profil)}}
+                
+                {{ form_start(form_password)}}
+
+                    <div class="form-group">
+                        {{ form_label(form_password.password, 'Mot de passe') }}
+                        {{ form_widget(form_password.password , { 'attr': {'class': "form-control",
+                        'placeholder': ""} }) }}
+                        {{ form_errors(form_password.password)}}
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form_password.password_confirmation, 'Confirmer Votre mot de passe')}}
+                        {{ form_widget(form_password.password_confirmation , { 'attr': {'class': "form-control",
+                        'placeholder': ""} }) }}
+                        {{ form_errors(form_password.password_confirmation)}}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+                    </div>
+                {{ form_end(form_password)}}
+				
+			</div>
+			<div class="col-md-4">
+				{{ form_start(form_avatar)}}
+                
+				<h3>Information secondaire</h3>
+				<div class="form-group">
+					<?php echo $this->Html->image('users/' . $user->avatar) ?>
+                    <img src="{{ asset('') }}">
+				</div>
+				<div class="form-group">
+					{{ form_label(form_avatar.avatar_file, 'Photo') }}
+                    {{ form_widget(form_avatar.avatar_file , { 'attr': {'class': "form-control",
+                        'placeholder': "Psudo"} }) }}
+                    {{ form_errors(form_avatar.avatar_file)}}
+				</div>
+
+				<div class="form-group">
+					<button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+				</div>
+				{{ form_end(form_avatar)}}
+			</div>
+			<div class="col-md-4">
+				<h3>Vous ete membre jusqu'a</h3>
+				<a href="" class="btn btn-secondary btn-abonement"><i class="fa fa-calendar"></i> voir mon abonement </a>
+				<div class="spasing"></div>
+				<a href="" class="btn btn-secondary btn-abonement"><i class="fa fa-calendar"></i> voir mes badges </a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

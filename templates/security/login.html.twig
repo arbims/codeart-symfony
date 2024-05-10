@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Se connecter' %}
+
+{% block body %}
+<div class="header_login">
+    <div class="container">
+      <h2>Se Connecter</h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <div class="body-login">
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey | trans(error.messagedata, 'security') }}
+                </div>
+            {% endif %}
+            <form action="{{ path('login') }}" method="post">
+            <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" placeholder="Votre email">
+            <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe">
+            <button class="btn btn-primary btn-login">Se connecter</button>
+          
+            <br><br><br>
+            <a href="" class="forget-password">Mot de passe oublier</a>
+         
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="body-login-seciaux">
+          <a id="FB-login-button" class="btn btn-primary btn-facebook" href="" title="Login with Facebook" style=""><i class="fa fa-facebook"></i>&nbsp; Se connecter avec facebook</a>
+          <a id="GG-login-button" class="btn btn-primary btn-google" href="" title="Login with Google" style=""><i class="fa fa-google"></i>&nbsp; Se connecter avec google</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,136 @@
+.mdeditor {
+  color: #555;
+  font-family: -apple-system-font, sans-serif;
+
+}
+
+.mirror_content p {
+  letter-spacing: 1px !important;
+  line-height: 28px !important;
+  min-height: 1em !important;
+  box-sizing: border-box !important;
+  word-wrap: break-word !important;
+  text-align: left;
+  margin: 20px 0px !important;
+}
+
+.mirror_content blockquote {
+  border-left: 10px solid rgba(128, 128, 128, 0.075);
+  background-color: rgba(128, 128, 128, 0.05);
+  padding: 13px 15px !important;
+  margin: 0px;
+}
+
+.mirror_content blockquote p {
+  color: #898989;
+  margin: 0px;
+}
+
+.mirror_content strong {
+  font-weight: 700;
+  color: #bf360c;
+}
+
+.mirror_content body {
+  font-size: 15px;
+  padding: 0 30px;
+}
+
+.mirror_content pre {
+  background-color: #f8f8f8;
+  border-radius: 3px;
+  word-wrap: break-word;
+  padding: 12px 13px;
+  font-size: 13px;
+  color: #898989;
+}
+
+.mirror_content h1,h2,h3,h4,h5,h6 {
+  word-break: break-all !important;
+  margin: 20px 0;
+  line-height: 1.2;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+.mirror_content h1 {
+  border-left: 6px solid #71BA51 !important;
+  font-size: 20px !important;
+}
+
+.mirror_content h2 {
+  border-left: 4px solid #71BA51 !important;
+  font-size: 18px !important;
+}
+
+.mirror_content h3 {
+  font-size: 16px;
+  border-left: 4px solid #71BA51 !important;
+}
+
+.mirror_content h4 {
+  font-size: 15px;
+  border-left: 2px solid #71BA51 !important;
+}
+
+.mirror_content a {
+  color: #4183C4 !important;
+  text-decoration: none !important;
+}
+
+.mirror_content ul,ol {
+  padding-left: 30px;
+}
+
+.mirror_content li {
+  line-height: 24px;
+}
+
+.mirror_content hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+  border-bottom: 1px solid #ddd;
+}
+
+.mirror_content pre {
+  background: #2d2d2d !important;
+  padding: 12px 13px;
+  overflow: auto;
+}
+
+.mirror_content code {
+  color: #e7e7e7;
+  overflow: auto;
+  padding: 0 0.2em;
+  font-size: 16px;
+}
+
+.mirror_content pre code {
+  padding: 0;
+  background-color: none;
+}
+
+.cm-markdown-single-trailing-space-odd:before,
+.cm-markdown-single-trailing-space-even:before,
+.cm-markdown-line-break:before {
+  font-weight: bold;
+  color: hsl(30, 100%, 50%);
+  /* a dark orange */
+  position: absolute;
+}
+
+
+.cm-markdown-single-trailing-space-odd:before,
+.cm-markdown-single-trailing-space-even:before {
+  content: '·';
+}
+
+.cm-markdown-line-break:before {
+  content: '↵';
+}

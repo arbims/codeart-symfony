@@ -1,0 +1,57 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-laugh-wink"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">Voir le site</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('admin.categories') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Categories</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('admin.posts') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Articles</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+
+     <li class="nav-item">
+      <a class="nav-link" href="{{ path('admin.tutoriels') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Tutoriels</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <a class="nav-link" href="<?php echo $this->Url->build(['controller' => 'formations', 'action'=>'index'] )?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Formations</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('admin.technologies') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Technologies</span></a>
+    </li>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      <a class="nav-link" href="<?php echo $this->Url->build(['controller' => 'forums_categories', 'action'=>'index'] )?>">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Forums Categories</span></a>
+    </li>
+
+    <hr class="sidebar-divider">  
+  </ul>

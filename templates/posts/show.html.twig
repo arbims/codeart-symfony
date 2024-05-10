@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Liste des article' %}
+{% block stylesheet %}
+
+{% endblock %}
+{% block body %}
+
+<div class="container-blog">
+    <img src="{{ asset(post.imageFile) }}" alt="{{ post.image}}" class="container-blog-img">
+</div>
+ 
+<div class="container blog-text">
+<div class="blog-author"><?php echo $this->Html->image('users/'.$avatar) ?></div>
+<div class="blog-content">
+    <div class="row">
+    <div class="col-md-12">
+    <h1>{{ post.name }}</h1>
+    <div class="md_editor">
+        <div id="content_markdown" class="mirror_content markdown-body"><?php echo $this->Markdown->transform($post->content); ?>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}
