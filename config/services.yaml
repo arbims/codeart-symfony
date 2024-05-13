@@ -28,3 +28,7 @@ services:
             $isDev: '%env(VITE_DEV)%'
             $manifest: '%kernel.project_dir%/public/assets/manifest.json'
             $cache: '@vite_cache_pool'
+
+    App\EventListener\VichImageHandling:
+        tags:
+            - { name: kernel.event_listener, event: vich_uploader.post_upload ,  method: resizeImage}
