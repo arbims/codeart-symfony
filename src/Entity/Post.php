@@ -11,6 +11,7 @@ use Doctrine\DBAL\Types\Types;
 use phpDocumentor\Reflection\Types\Integer;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
+#[ORM\Table("posts")]
 class Post
 {
     const TYPES = [

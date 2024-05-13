@@ -33,7 +33,7 @@ class Technology
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content;
 
-    #[ORM\ManyToMany(targetEntity:Technology::class, inversedBy:"technologies")]
+    #[ORM\ManyToMany(targetEntity:Post::class, mappedBy:"technologies")]
     private $posts;
 
     #[ORM\Column(type: Types::DATE_IMMUTABLE)]

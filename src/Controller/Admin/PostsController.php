@@ -18,19 +18,13 @@ class PostsController extends AbstractController {
         $this->em = $em->getManager();
     }
 
-
-    /**
-     * @Route("/admin/posts", name="admin_posts")
-     */
     #[Route("/admin/posts", name: 'admin.posts')]
     public function index(PostRepository $postRepository) {
         $posts = $postRepository->findAll();
         return $this->render('admin/posts/index.html.twig', compact('posts'));
     }
 
-    /**
-     * @Route("/admin/posts/add", name="admin_post_add" , methods={"GET","POST"})
-     */
+    #[Route("/admin/posts/add", name: 'admin.posts.add', methods: ['GET', 'POST'])]
     public function add(Request $request) {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
