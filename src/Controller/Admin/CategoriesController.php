@@ -19,7 +19,7 @@ class CategoriesController extends AbstractController {
     }
 
 
-    
+
     #[Route("/admin/categories", name: 'admin.categories')]
     public function index(CategoryRepository $categoryRepository) {
         $categories = $categoryRepository->findAll();
@@ -39,7 +39,7 @@ class CategoriesController extends AbstractController {
             $this->addFlash('success', 'Category bien ajouter');
             return $this->redirectToRoute('admin.categories');
         }
-        
+
         return $this->render('admin/categories/add.html.twig', [
             'form' => $form->createView(),
             'category' => $category
@@ -57,7 +57,7 @@ class CategoriesController extends AbstractController {
             $this->addFlash('success', 'Category bien modifier');
             return $this->redirectToRoute('admin_categories');
         }
-        
+
         return $this->render('admin/categories/edit.html.twig', [
             'form' => $form->createView(),
             'category' => $category
@@ -67,7 +67,7 @@ class CategoriesController extends AbstractController {
     /**
      * @Route("/admin/categories/delete/{id}", name="admin_category_delete")
      * supprimer une categorie
-     * 
+     *
      */
     #[Route("/admin/categories/delete/{id}", name: 'admin.categories.delete', methods:["GET"])]
     public function delete(Category $category) {
