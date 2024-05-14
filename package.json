@@ -1,0 +1,27 @@
+{
+  "name": "vite-js",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "preact": "^10.5.9",
+    "turbolinks": "^5.2.0",
+    "typed.js": "^2.0.11"
+  },
+  "devDependencies": {
+    "@prefresh/vite": "^2.0.0",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "codemirror": "^5.59.4",
+    "highlightjs": "^9.16.2",
+    "marked": "^2.0.1",
+    "popper.js": "^1.16.1",
+    "pusher-js": "^7.0.3",
+    "sass": "^1.32.8",
+    "vite": "^2.0.5"
+  }
+}

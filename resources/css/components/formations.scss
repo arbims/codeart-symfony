@@ -1,0 +1,112 @@
+/*** -----------Formation --------***/
+.list-cistom-formation {
+    background-color: $base-hover-btton;
+    color: #FFF !important;
+    font-weight: bold;
+ }
+ .list-group-item {
+    font-size: 16px;
+    color: #828b95;
+    font-weight: bold;
+    line-height: 30px;
+ }
+ .chapter-formation-count {
+    font-size: 14px !important;
+    font-weight: 100;
+ }
+ 
+ .custom-card-formation {
+    margin: 20px 10px;
+    padding: 0px !important;
+    cursor: pointer;
+ }
+ .custom-card-formation:hover {
+    color: inherit;
+    text-decoration: none;
+ }
+ 
+ .custom-card-formation img {
+    position: absolute;
+    width: 180px;
+    padding: 20px;
+ 
+ }
+ .custom-card-formation  .card-header {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
+ }
+ .custom-card-formation .card-body {
+    color: #49625a;
+ }
+ .custom-card-formation .card-body p {
+    padding-left: 33%;
+ }
+ .description_formation_header {
+    color: #828b95;
+ }
+ .formation_left {
+    padding-left: 50px;
+ }
+ .tabs_header_formation {
+    border-bottom: 3px solid #ececec;
+    background-color: #fff;
+    margin-bottom: -3px!important;
+ }
+ .tabs_header_formation a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: #495057;
+    font-size: 18px;
+    height: 66px;
+    padding: 15px;
+    line-height: 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2a2f35;
+ }
+ 
+ .tabs_header_formation i {
+    padding-right: 10px;
+ }
+ .tab_formation {
+    /*border-bottom: 3px solid #ececec;*/
+    border-right: 1px solid #ececec;
+    border-left: 1px solid #ececec;
+ }
+ .tab_formation_em {
+    display: block;
+    padding-left: 30px;
+    line-height: 10px;
+    font-size: 14px;
+    font-weight: 100;
+ }
+ .tab_formation_rigth {
+    margin-left: auto;
+    display: flex;
+ }
+ .formation-table {
+    padding-left: 0px !important;
+ }
+ .formation_techno {
+    padding-top: 30px;
+ }
+
+ .iconplay {
+    width: 36px;
+ }
+
+.formation-techno {
+   display: flex;
+   justify-content: space-between;
+}
+.formation-techno-list {
+   width: 100% !important;
+   & p {
+      padding: 0;
+      margin-left: 0px;
+   }
+}

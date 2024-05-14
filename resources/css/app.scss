@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+body {
+   padding: 0px;
+   margin: 0px;
+   font-family: Arial, Helvetica, sans-serif;
+   color: #000;
+}
+
+@import "./bootstrap/bootstrap.min.scss";
+
+@import "./components/variable.scss";
+
+@import "./components/navbar.scss";
+
+@import "./components/notifications.scss";
+
+@import './components/index.scss';
+
+@import './components/blog.scss';
+
+@import './components/tutoriels.scss';
+
+@import './components/formations.scss';
+
+@import './components/forums.scss';
+
+@import './components/commentaire.scss';
+
+@import './components/profil.scss';
+
+@import './components/sidebar.scss';
+
+/*** -------------- mobile ------------- ***/
+
+@media only screen and (max-width: 991px) {
+   .navbar-collapse {
+       background-color: #252827;
+   }
+
+   .header-image img {
+       width: 54px;
+   }
+
+   .nav-item {
+       padding-left: 10px;
+   }
+   .navbar-collapse {
+       margin-top:-2px;
+   }
+}
+
+@media only screen and (max-width: 1200px) {
+   .custom-card {
+       width: 14rem !important;
+   }
+}
+
+@import 'highlightjs/styles/tomorrow-night-eighties.css';
+
+pre {
+    padding: 1rem;
+    margin: 1.875rem -10px;
+    font-family: Consolas,Monaco,Andale Mono,monospace;
+    background-color: #2d2d2d;
+    max-width: 100vw;
+    overflow: auto;
+    font-size: 16px;
+}

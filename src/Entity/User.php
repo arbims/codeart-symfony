@@ -10,11 +10,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use App\Plugins\Annotation\Uploadable;
 use App\Plugins\Annotation\UploadableField;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity('email', message:"Ce email est deja pris")]
 #[UniqueEntity('username', message:"Ce username est deja pris")]
-class User implements UserInterface
+class User implements UserInterface , PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

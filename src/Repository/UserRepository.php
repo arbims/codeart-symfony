@@ -6,6 +6,8 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,19 +21,37 @@ class UserRepository extends ServiceEntityRepository implements UserLoaderInterf
     {
         parent::__construct($registry, User::class);
     }
-
-    public function loadUserByUsername(string $usernameOrEmail): ?User
+    
+    /**
+     * upgradePassword
+     *
+     * @param  mixed $user
+     * @param  mixed $newHashedPassword
+     * @return void
+     */
+    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void
     {
-        $entityManager = $this->getEntityManager();
-
-        return $entityManager->createQuery(
-                'SELECT u
-                FROM App\Entity\User u
-                WHERE u.username = :query
-                OR u.email = :query'
-            )
+        if(!$user instanceof User) {
+            throw new UnsupportedUserException(sprintf('Instances of "%s" are not supported', $user::class));
+        }
+        $user->setPassword($newHashedPassword);
+        $this->getEntityManager()->persist($user);
+        $this->getEntityManager()->flush();
+    }
+    
+    /**
+     * loadUserByUsername
+     *
+     * @param  mixed $usernameOrEmail
+     * @return User
+     */
+    public function loadUserByUsernameOrEmail(string $usernameOrEmail): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.email = :query')
+            ->orWhere('u.username = :query')
             ->setParameter('query', $usernameOrEmail)
-            ->getOneOrNullResult();
+            ->getQuery()->getOneOrNullResult();
     }
 
     // /**

@@ -4,7 +4,10 @@
 
 {% block body %}
    
-
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('app') }}#}
+    {{ vite_asset('js/main.js', []) }}
+{% endblock %}
 <div class="hero_user">
     <div class="container">
         <div class="row">

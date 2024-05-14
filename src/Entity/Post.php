@@ -61,6 +61,9 @@ class Post
     #[ORM\ManyToMany(targetEntity:Technology::class, inversedBy:"posts")]
     private $technologies;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $online = null;
+
     public function __construct()
     {
         $this->technologies = new ArrayCollection();
@@ -225,6 +228,18 @@ class Post
     {
         $this->created_at = new \DateTime("now");
         $this->updated_at = new \DateTime("now");
+    }
+
+    public function getOnline(): ?int
+    {
+        return $this->online;
+    }
+
+    public function setOnline(?int $online): static
+    {
+        $this->online = $online;
+
+        return $this;
     }
 
 }
