@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -56,13 +58,20 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable:true)]
     private ?string $country;
 
-   
+    /**
+     * @var Collection<int, Post>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Post::class)]
+    private Collection $posts;
+
+
     public function __construct()
     {
         $this->confirmed = false;
         $this->roles[] = 'ROLE_USER';
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
+        $this->posts = new ArrayCollection();
     }
 
 
@@ -192,7 +201,7 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
 
     public function eraseCredentials(): void
     {
-       
+
     }
 
     /**
@@ -247,11 +256,46 @@ class User implements UserInterface , PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
+
         /**
      * Returns the identifier for this user (e.g. username or email address).
      */
     public function getUserIdentifier(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return Collection<int, Post>
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(Post $post): static
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts->add($post);
+            $post->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): static
+    {
+        if ($this->posts->removeElement($post)) {
+            // set the owning side to null (unless already changed)
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
     {
         return $this->email;
     }

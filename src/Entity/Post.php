@@ -42,7 +42,7 @@ class Post
 
     #[Vich\UploadableField(mapping: 'post_image', fileNameProperty: 'image')]
     private ?File $imageFile = null;
-    
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
@@ -61,8 +61,11 @@ class Post
     #[ORM\ManyToMany(targetEntity:Technology::class, inversedBy:"posts")]
     private $technologies;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $online = null;
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?int $online = 0;
+
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -230,7 +233,7 @@ class Post
         $this->updated_at = new \DateTime("now");
     }
 
-    public function getOnline(): ?int
+    public function getOnline(): ?bool
     {
         return $this->online;
     }
@@ -238,6 +241,18 @@ class Post
     public function setOnline(?int $online): static
     {
         $this->online = $online;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
