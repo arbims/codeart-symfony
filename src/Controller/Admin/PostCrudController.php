@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
@@ -29,7 +30,7 @@ class PostCrudController extends AbstractCrudController
             TextField::new('imageFile')->setFormType(VichFileType::class)->onlyOnForms(),
             ImageField::new('image')->setBasePath('uploads/posts')->onlyOnIndex(),
             TextEditorField::new('content')->setColumns(12),
-            AssociationField::new('user'),
+            AssociationField::new('user')->onlyOnIndex(),
             AssociationField::new('category')->autocomplete()->setColumns(6),
             ChoiceField::new('type')->setChoices(['post' => '1', 'tutoriel' => '2'])->setColumns(6)->renderAsBadges()->setFormTypeOption('data','1'),
             AssociationField::new('technologies')->autocomplete()->setColumns(6),

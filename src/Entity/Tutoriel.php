@@ -6,13 +6,14 @@ use App\Repository\TutorielRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: TutorielRepository::class)]
 class Tutoriel
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private $id;
+    private ?int $id = null;
 
     #[ORM\Column(type: Types::INTEGER)]
     private $duration = null;
@@ -40,6 +41,9 @@ class Tutoriel
 
     #[ORM\Column(type: Types::INTEGER, nullable:true)]
     private $lvl;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Post $post = null;
 
     public function getId(): ?int
     {
@@ -153,4 +157,18 @@ class Tutoriel
 
         return $this;
     }
+
+    public function getPost(): ?Post
+    {
+        return $this->post;
+    }
+
+    public function setPost(?Post $post): static
+    {
+        $this->post = $post;
+
+        return $this;
+    }
+
+    use TutorielPostField;
 }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Category;
 use App\Entity\Post;
 use App\Entity\Technology;
+use App\Entity\Tutoriel;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Categories', 'fa fa-pencil', Category::class);
         yield MenuItem::linkToCrud('Articles', 'fa fa-pencil', Post::class);
+        yield MenuItem::linkToCrud('Tutoriels', 'fa fa-pencil', Tutoriel::class);
         yield MenuItem::linkToCrud('Technologies', 'fa fa-pencil', Technology::class);
         // yield MenuItem::linkToCrud('مقالات ', 'fa fa-pencil', Post::class);
         // yield MenuItem::linkToCrud('البرامج ', 'fa fa-pencil', Program::class);
