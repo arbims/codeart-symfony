@@ -1,0 +1,142 @@
+<header class="flex items-center justify-between py-5" hx-boost="true">
+	<div>
+		<a href="/" aria-label="Header title">
+			<div class="flex items-center justify-between">
+				<div class="mr-3">
+					<?= img('img/codeart.png') ?>
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="flex items-center space-x-4 leading-5 sm:space-x-6">
+		<a href="/blog" class="hidden font-medium text-gray-900 dark:text-gray-100 sm:block">
+			Articles
+		</a>
+		<a href="/tutoriels" class="hidden font-medium text-gray-900 dark:text-gray-100 sm:block">
+			Turoriels
+		</a>
+		<a href="/contact" class="hidden font-medium text-gray-900 dark:text-gray-100 sm:block">
+			Contact
+		</a>
+		<?php if (session()->get('user') == null): ?>
+			<a href="/auth/login" class="hidden font-medium text-gray-900 dark:text-gray-100 sm:block">
+				Connexion
+			</a>
+			<a href="/auth/inscription" class="hidden font-medium text-gray-900 dark:text-gray-100 sm:block">
+				Inscription
+			</a>
+		<?php else : ?>
+
+			<span x-data="dropdownDelay" @click.outside="open = false">
+				<!-- Bouton du dropdown -->
+				<button @click="toggle" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
+					<span class="sr-only">Open user menu</span>
+					<?php if (session()->get('user') !== null && session()->get('user')['avatar'] !== null): ?>
+						<?php echo img('uploads/users/' . session()->get('user')['avatar'], false, ['class' => 'w-9 h-9 rounded-full']) ?>
+					<?php else : ?>
+						<?php echo img('img/profil.jpg', false, ['class' => 'w-9 h-9 rounded-full']) ?>
+					<?php endif; ?>
+				</button>
+
+				<!-- Menu dropdown -->
+				<div x-show="open" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 toggle">
+					<ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+						<li>
+							<a href="/auth/profil" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+						</li>
+						<?php if (session()->get('user') !== null && session()->get('user')['role'] == 'admin'): ?>
+							<li>
+								<a hx-boost="false" href="/admin" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-turbolinks="false">Administration</a>
+							</li>
+						<?php endif; ?>
+						<li>
+							<a href="/auth/logout" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Déconnexion</a>
+						</li>
+					</ul>
+				</div>
+			</span>
+		<?php endif; ?>
+
+		<div x-data="themeToggle()" x-init="initializeTheme()">
+			<button aria-label="Toggle Dark Mode" @click="toggleDarkMode">
+
+				<!-- Icône du mode sombre -->
+				<template x-if="isDarkTheme">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+						class="h-6 w-6 text-gray-900 dark:text-gray-100">
+						<path fill-rule="evenodd"
+							d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+							clip-rule="evenodd" />
+					</svg>
+				</template>
+				<!-- Icône du mode clair -->
+				<template x-if="!isDarkTheme">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+						class="h-6 w-6 text-gray-900 dark:text-gray-100">
+						<path
+							d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+					</svg>
+				</template>
+				</svg>
+			</button>
+		</div>
+
+		<span x-data="sideBarMobile" @click.outside="openSidebar = false">
+			<button @click="toggleSidebar" aria-label="Toggle Menu" class="sm:hidden" id="show-sidebar-mobile">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-8 w-8 text-gray-900 dark:text-gray-100">
+					<path fillrule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" cliprule="evenodd"></path>
+				</svg>
+			</button>
+
+			<div class="fixed left-0 top-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out dark:bg-gray-950 dark:opacity-[0.98] translate-x-0" x-show="openSidebar">
+				<div class="flex justify-end">
+					<button class="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu" id="hide-menu-mobile" @click="toggleSidebar">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="text-gray-900 dark:text-gray-100">
+							<path fillrule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" cliprule="evenodd"></path>
+						</svg>
+					</button>
+				</div>
+				<nav class="fixed mt-8 h-full">
+					<div class="px-12 py-4">
+						<a href="/blog" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+							Articles
+						</a>
+					</div>
+					<div class="px-12 py-4">
+						<a href="/tutoriels" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+							Tutoriels
+						</a>
+					</div>
+					<div class="px-12 py-4">
+						<a href="/contact" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+							Contact
+						</a>
+					</div>
+					<?php if (session()->get('user') === null): ?>
+						<div class="px-12 py-4">
+							<a href="/auth/login" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+								Connexion
+							</a>
+						</div>
+						<div class="px-12 py-4">
+							<a href="/auth/inscription" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+								Inscription
+							</a>
+						</div>
+					<?php else : ?>
+						<div class="px-12 py-4">
+							<a href="/auth/profil" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+								Profile
+							</a>
+						</div>
+						<div class="px-12 py-4">
+							<a href="/auth/logout" class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">
+								Deconnexion
+							</a>
+						</div>
+					<?php endif; ?>
+				</nav>
+			</div>
+		</span>
+	</div>
+</header>
