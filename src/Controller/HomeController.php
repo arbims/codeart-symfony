@@ -9,9 +9,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController {
 
     #[Route("/", name: "page.home")]
-    public function index() {
+    public function index(PostRepository $postRepository) {
         
-        $posts = [];
+        $posts = $postRepository->findAll();
         return $this->render('home.html.twig', [
             'posts' => $posts
         ]);
