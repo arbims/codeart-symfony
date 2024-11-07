@@ -1,18 +1,11 @@
 import { defineConfig } from 'vite'
-import preactRefresh from '@prefresh/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-    jsxInject: `import { h, Fragment } from 'preact'`
-  },
-  plugins: [preactRefresh()],
   root: './resources/',
   base: '/assets/',
   build: {
-    outDir: '../public/assets',
+    outDir: '../webroot/assets',
     assetsDir: '',
     manifest: true,
     rollupOptions: {
@@ -20,8 +13,11 @@ export default defineConfig({
         manualChunks: undefined
       },
       input: {
-        'main.jsx': './resources/js/main.jsx'
+        'main.js': './assets/js/main.js'
       }
     }
+  },
+  server: {
+    port: 3000
   }
 })

@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html class="scroll-smooth">
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-            {{ vite_asset('js/main.jsx', []) }}
-        {% endblock %}
-    </head>
-    <body>
-        
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+   
+    <meta name="turbolinks-cache-control" content="no-cache"/>
+    {{ vite_asset('js/main.js', []) }}
+</head>
 
-        <header>
-            {% include 'element/navbar.html.twig' %}
-        </header>
-        {% if app.user %}
-     
-            {% include 'element/sidebar.html.twig' %}
-        {% endif %}
-        <main class="main">
+<body class="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
+    <section class="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
+        {% include 'element/header.html.twig' %}
+        <main>
+            <div class="container" id="main">
             {% include 'element/flash.html.twig' %}
             {% block body %}{% endblock %}
-            <div id="app"></div>
+            </div>
         </main>
-        {% include 'element/footer.html.twig' %}
-    </body>
+    </section>
+    <footer>
+    </footer>
+</body>
+
 </html>

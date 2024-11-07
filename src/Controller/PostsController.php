@@ -13,9 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostsController extends AbstractController {
 
 
-    /**
-     * @Route("/blog", name="posts_list")
-     */
+    #[Route('/blog', name: 'posts.blog')]
     public function index(PostRepository $postRepository , PaginatorInterface $paginator, Request $request)
     {
         $query = $postRepository->findAllArticle();
