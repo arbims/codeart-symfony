@@ -14,45 +14,56 @@
 				<!-- Column spanning 6 out of 12 columns on medium screens -->
 				<div class="col-span-12 md:col-span-6">
 					<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-						{{ form_start(form_profil)}}
+						{{ form_start(form_profil, { 'attr': { 'class' : 'space-y-4 md:space-y-6' } })}}
 						<div>
-							{{ form_label(form_profil.email, 'Couriel *', { attr: { class: class_label }}) }}
+							{{ form_label(form_profil.email, 'Couriel *', { 'label_attr': { 'class': class_label }}) }}
 							{{ form_widget(form_profil.email , { 'attr': {'class': class_input,
                         'placeholder': "example@mail.com"} }) }}
 							{{ form_errors(form_profil.email)}}
 						</div>
 						<div>
-							{{ form_label(form_profil.username, 'Pseudo *', { attr: { class: class_label }}) }}
+							{{ form_label(form_profil.username, 'Pseudo *', { 'label_attr': { 'class': class_label }}) }}
 							{{ form_widget(form_profil.username , { 'attr': {'class': class_input,
                         'placeholder': "Psudo"} }) }}
 							{{ form_errors(form_profil.username)}}
 						</div>
 
 						<div>
-							{{ form_label(form_profil.password, 'Mot de passe *', { attr: { class: class_label }}) }}
+							{{ form_label(form_profil.password, 'Mot de passe *', { 'label_attr': { 'class': class_label }}) }}
 							{{ form_widget(form_profil.password , { 'attr': {'class': class_input,
                         'placeholder': "Psudo"} }) }}
 							{{ form_errors(form_profil.password)}}
 						</div>
 
 						<div>
-							{{ form_label(form_profil.confirm_password, 'Mot de passe *', { attr: { class: class_label }}) }}
+							{{ form_label(form_profil.confirm_password, 'Mot de passe *', { 'label_attr': { 'class': class_label }}) }}
 							{{ form_widget(form_profil.confirm_password , { 'attr': {'class': class_input,
                         'placeholder': "Psudo"} }) }}
 							{{ form_errors(form_profil.confirm_password)}}
 						</div>
 
 						<div class="form-group">
-							<button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+							<button class="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" type="submit">Enregistrer</button>
 						</div>
 						{{ form_end(form_profil)}}
 
 					</div>
-					<div class="col-span-12 md:col-span-6">
-						<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md"></div>
+				</div>
+				<div class="col-span-12 md:col-span-6">
+					<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+						{{ form_start(image_profil, { 'attr': { 'class' : 'space-y-8' } })}}
+						<div>
+							{{ form_label(image_profil.avatar, 'Pseudo *', { 'label_attr': { 'class': class_label }}) }}
+							{{ form_widget(image_profil.avatar , { 'attr': {'class': class_input,
+                        'placeholder': "Psudo"} }) }}
+							{{ form_errors(image_profil.avatar)}}
+						</div>
+
+						{{ form_end(image_profil)}}
 					</div>
 				</div>
 			</div>
+
 		</div>
 
 	</section>

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ImageProfilType;
 use App\Form\ProfilType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,8 +16,10 @@ class UserController extends AbstractController
     {
         $user = new User();
         $profilForm = $this->createForm(ProfilType::class, $user);
+        $imageProfilForm = $this->createForm(ImageProfilType::class, $user);
         return $this->render('auth/profil.html.twig', [
-            'form_profil' => $profilForm->createView()
+            'form_profil' => $profilForm->createView(),
+            'image_profil' => $imageProfilForm->createView()
         ]);
     }
 }
