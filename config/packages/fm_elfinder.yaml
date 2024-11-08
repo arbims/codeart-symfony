@@ -1,0 +1,16 @@
+# config/packages/fm_elfinder.yaml
+fm_elfinder:
+    assets_path: ''
+    instances:
+        default:
+            locale: fr
+            editor: ckeditor
+            fullscreen: true
+            connector:
+                roots:
+                    uploads:
+                        driver: LocalFileSystem
+                        path: 'uploads'
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'image/gif']
+                        upload_deny: ['all']
+                        upload_max_size: 2M

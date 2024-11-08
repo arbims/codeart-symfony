@@ -5,7 +5,9 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+/public/bundles/easyadmin
+/public/bundles/fmelfinder
+/public/bundles/fosckeditor
 /public/uploads/
 /var/
 /vendor/

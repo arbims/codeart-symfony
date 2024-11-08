@@ -6,4 +6,6 @@ fos_ck_editor:
     configs:
         main_config:
             extraPlugins: 'codesnippet'
+            filebrowserBrowseRoute: elfinder
+            filebrowserBrowseRouteParameters: []
 
