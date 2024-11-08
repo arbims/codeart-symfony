@@ -1,89 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-<div class="header_login">
-	<div class="container">
-		<h2>Mon profil</h2>
-	</div>
-</div>
-<div class="container">
-	<div class="form_profil">
-		<div class="row">
-			<div class="col-md-4">
-				<h3>Mon compte</h3>
-				{{ form_start(form_profil)}}
-                    <div class="form-group">
-                        {{ form_label(form_profil.email, 'Couriel *') }}
-                        {{ form_widget(form_profil.email , { 'attr': {'class': "form-control",
+	{% set class_input = "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %}
+	{% set class_label = "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %}
+	<section>
+		<div class="container mx-auto">
+			<div class="pt-8 lg:pt-16 px-4 mx-auto max-w-screen-md">
+				<h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">Mon Profil</h2>
+				<p class="font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.</p>
+			</div>
+			<div
+				class="grid grid-cols-1 md:grid-cols-12 gap-4">
+				<!-- Column spanning 6 out of 12 columns on medium screens -->
+				<div class="col-span-12 md:col-span-6">
+					<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+						{{ form_start(form_profil)}}
+						<div>
+							{{ form_label(form_profil.email, 'Couriel *', { attr: { class: class_label }}) }}
+							{{ form_widget(form_profil.email , { 'attr': {'class': class_input,
                         'placeholder': "example@mail.com"} }) }}
-                        {{ form_errors(form_profil.email)}}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form_profil.username, 'Pseudo *') }}
-                        {{ form_widget(form_profil.username , { 'attr': {'class': "form-control",
+							{{ form_errors(form_profil.email)}}
+						</div>
+						<div>
+							{{ form_label(form_profil.username, 'Pseudo *', { attr: { class: class_label }}) }}
+							{{ form_widget(form_profil.username , { 'attr': {'class': class_input,
                         'placeholder': "Psudo"} }) }}
-                        {{ form_errors(form_profil.username)}}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form_profil.country, 'Pays') }}
-                        {{ form_widget(form_profil.country , { 'attr': {'class': "form-control",
-                        'placeholder': "Pays"} }) }}
-                        {{ form_errors(form_profil.country)}}
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
-				    </div>
-                {{ form_end(form_profil)}}
-                
-                {{ form_start(form_password)}}
+							{{ form_errors(form_profil.username)}}
+						</div>
 
-                    <div class="form-group">
-                        {{ form_label(form_password.password, 'Mot de passe') }}
-                        {{ form_widget(form_password.password , { 'attr': {'class': "form-control",
-                        'placeholder': ""} }) }}
-                        {{ form_errors(form_password.password)}}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form_password.password_confirmation, 'Confirmer Votre mot de passe')}}
-                        {{ form_widget(form_password.password_confirmation , { 'attr': {'class': "form-control",
-                        'placeholder': ""} }) }}
-                        {{ form_errors(form_password.password_confirmation)}}
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
-                    </div>
-                {{ form_end(form_password)}}
-				
-			</div>
-			<div class="col-md-4">
-				{{ form_start(form_avatar)}}
-                
-				<h3>Information secondaire</h3>
-				<div class="form-group">
-					<?php echo $this->Html->image('users/' . $user->avatar) ?>
-                    <img src="{{ asset('') }}">
-				</div>
-				<div class="form-group">
-					{{ form_label(form_avatar.avatar_file, 'Photo') }}
-                    {{ form_widget(form_avatar.avatar_file , { 'attr': {'class': "form-control",
+						<div>
+							{{ form_label(form_profil.password, 'Mot de passe *', { attr: { class: class_label }}) }}
+							{{ form_widget(form_profil.password , { 'attr': {'class': class_input,
                         'placeholder': "Psudo"} }) }}
-                    {{ form_errors(form_avatar.avatar_file)}}
-				</div>
+							{{ form_errors(form_profil.password)}}
+						</div>
 
-				<div class="form-group">
-					<button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+						<div>
+							{{ form_label(form_profil.confirm_password, 'Mot de passe *', { attr: { class: class_label }}) }}
+							{{ form_widget(form_profil.confirm_password , { 'attr': {'class': class_input,
+                        'placeholder': "Psudo"} }) }}
+							{{ form_errors(form_profil.confirm_password)}}
+						</div>
+
+						<div class="form-group">
+							<button class="btn btn-success btn-comment" type="submit">Mettre a jour</button>
+						</div>
+						{{ form_end(form_profil)}}
+
+					</div>
+					<div class="col-span-12 md:col-span-6">
+						<div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md"></div>
+					</div>
 				</div>
-				{{ form_end(form_avatar)}}
-			</div>
-			<div class="col-md-4">
-				<h3>Vous ete membre jusqu'a</h3>
-				<a href="" class="btn btn-secondary btn-abonement"><i class="fa fa-calendar"></i> voir mon abonement </a>
-				<div class="spasing"></div>
-				<a href="" class="btn btn-secondary btn-abonement"><i class="fa fa-calendar"></i> voir mes badges </a>
 			</div>
 		</div>
-	</div>
-</div>
 
+	</section>
 {% endblock %}
