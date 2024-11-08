@@ -44,8 +44,7 @@
 						<li>
 							<a href="/auth/profil" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
 						</li>
-						
-						{% if app.user is not null and 'admin' in app.user.roles %}
+						{% if app.user is not null and 'ROLE_ADMIN' in app.user.roles %}
 							<li>
 								<a hx-boost="false" href="/admin" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" data-turbolinks="false">Administration</a>
 							</li>
